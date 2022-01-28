@@ -1,5 +1,6 @@
 package com.coderhouse.controller;
 
+import com.coderhouse.exception.IdNotFoundException;
 import com.coderhouse.model.request.UserRequest;
 import com.coderhouse.model.response.UserResponse;
 import com.coderhouse.service.UserService;
@@ -20,6 +21,11 @@ public class UserController {
     public UserResponse createUser(
             @Validated @RequestBody UserRequest user) {
         return service.create(user);
+    }
+
+    @GetMapping("")
+    public UserResponse getUser(@RequestBody String id) throws IdNotFoundException {
+        return service.getUserById(id);
     }
 
     @GetMapping("/all")

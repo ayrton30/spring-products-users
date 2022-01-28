@@ -1,4 +1,10 @@
 spring:
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
+    timeOfLife: 60000
   data:
     mongodb:
       uri: mongodb://localhost:27017

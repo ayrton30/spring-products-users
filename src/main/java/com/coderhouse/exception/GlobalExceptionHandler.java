@@ -15,7 +15,15 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler (MethodArgumentNotValidException.class)
     @ResponseStatus (HttpStatus.BAD_REQUEST)
-    public String IdNotFound(MethodArgumentNotValidException ex) {
+    public String MethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+        log.error(ex.getMessage());
+        return ex.getMessage();
+    }
+
+    @ResponseBody
+    @ExceptionHandler (IdNotFoundException.class)
+    @ResponseStatus (HttpStatus.BAD_REQUEST)
+    public String IdNotFound(IdNotFoundException ex) {
         log.error(ex.getMessage());
         return ex.getMessage();
     }
